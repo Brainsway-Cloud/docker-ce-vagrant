@@ -1,8 +1,6 @@
         #!/bin/bash -v
         
         # Download and run scripts to configure Ubuntu and Docker
-        git clone https://github.com/redgeoff/docker-ce-vagrant
-        cd docker-ce-vagrant
         ./ubuntu.sh # Select "keep the local version ... "
         ./docker.sh
         
