@@ -1,4 +1,4 @@
-        #!/bin/bash -v
+        #!/bin/bash -vx
         
         # Download and run scripts to configure Ubuntu and Docker
         ./ubuntu.sh # Select "keep the local version ... "
