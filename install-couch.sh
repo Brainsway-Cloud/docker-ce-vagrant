@@ -36,5 +36,6 @@
         else
             git clone https://github.com/redgeoff/redgeoff-couchdb-docker
             cd redgeoff-couchdb-docker
+            # See https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html for how meta-data works
             ./create-cluster.sh admin admin 5984 5986 $1 `(curl http://169.254.169.254/latest/meta-data/local-ipv4)`
         fi
