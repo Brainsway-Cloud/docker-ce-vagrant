@@ -27,6 +27,14 @@
           -e URL='http://admin:admin@localhost:5984' \
           redgeoff/spiegel
           
+        docker service create \
+           --name update-listener \
+           --detach=true \
+           --replicas 2 \
+           -e TYPE='update-listener' \
+           -e URL='http://user:password@yourcouchdb.com:5984' \
+           redgeoff/spiegel
+          
         # Enable CORS so that your application can communicate with the database from another domain/subdomain.
         curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
         apt-get install -y nodejs build-essential
