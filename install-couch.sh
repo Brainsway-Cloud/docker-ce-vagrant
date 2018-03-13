@@ -32,7 +32,7 @@
            --detach=true \
            --replicas 2 \
            -e TYPE='update-listener' \
-           -e URL='http://user:password@yourcouchdb.com:5984' \
+           -e URL='http://admin:admin@localhost:5984' \
            redgeoff/spiegel
           
         # Enable CORS so that your application can communicate with the database from another domain/subdomain.
