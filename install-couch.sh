@@ -22,7 +22,7 @@
           -e COUCHDB_NODE_NAME=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)` \
           redgeoff/couchdb
           
-        docker run -it \
+        docker run -d --name spiegel-install \
           -e TYPE='install' \
           -e URL='http://admin:admin@localhost:5984' \
           redgeoff/spiegel
