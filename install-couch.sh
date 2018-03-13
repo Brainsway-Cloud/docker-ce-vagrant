@@ -22,6 +22,11 @@
           -e COUCHDB_NODE_NAME=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)` \
           redgeoff/couchdb
           
+        docker run -it \
+          -e TYPE='install' \
+          -e URL='http://admin:admin@localhost:5984' \
+          redgeoff/spiegel
+          
         # Enable CORS so that your application can communicate with the database from another domain/subdomain.
         curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
         apt-get install -y nodejs build-essential
