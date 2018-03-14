@@ -30,11 +30,20 @@
           redgeoff/spiegel
           
         docker service create \
-           --name update-listener \
+           --name spiegel-update-listener \
            --detach=true \
            --replicas 2 \
            -e TYPE='update-listener' \
-           -e URL='http://admin:admin@localhost:5984' \
+           -e URL='http://admin:admin@$LOCAL_IP:5984' \
+           redgeoff/spiegel
+           
+        docker service create \
+           --name spiegel-replicator \
+           --detach=true \
+           --replicas 2 \
+           -e URL='http://admin:admin@$LOCAL_IP:5984' \
+           --mount type=bind,source=replicator-passwords.json,destination=/usr/src/app/passwords.json \
+           -e PASSWORDS_FILE=/usr/src/app/passwords.json \
            redgeoff/spiegel
           
         # Enable CORS so that your application can communicate with the database from another domain/subdomain.
