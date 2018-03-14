@@ -10,9 +10,7 @@
         HASH=$3
         COOKIE=$4
         SECRET=$5      
-        
-        '-pbkdf2-b1eb7a68b0778a529c68d30749954e9e430417fb,4da0f8f1d98ce649a9c5a3845241ae24,10'
-        
+              
         # Create a directory for hosting your DB files
         mkdir /home/ubuntu/common
         
