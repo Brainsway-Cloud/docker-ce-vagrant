@@ -24,7 +24,7 @@
           
         LOCAL_IP=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)`
           
-        docker run -d --name spiegel-install \
+        docker run -it --name spiegel-install \
           -e TYPE='install' \
           -e URL=http://admin:admin@$LOCAL_IP:5984 \
           redgeoff/spiegel
