@@ -22,9 +22,11 @@
           -e COUCHDB_NODE_NAME=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)` \
           redgeoff/couchdb
           
+        LOCAL_IP=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)`
+          
         docker run -d --name spiegel-install \
           -e TYPE='install' \
-          -e URL='http://admin:admin@localhost:5984' \
+          -e URL=http://admin:admin@$LOCAL_IP:5984 \
           redgeoff/spiegel
           
         docker service create \
@@ -50,5 +52,5 @@
             git clone https://github.com/redgeoff/redgeoff-couchdb-docker
             cd redgeoff-couchdb-docker
             # See https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html for how meta-data works
-            ./create-cluster.sh admin admin 5984 5986 $1 `(curl http://169.254.169.254/latest/meta-data/local-ipv4)`
+            ./create-cluster.sh admin admin 5984 5986 $1 $LOCAL_IP
         fi
