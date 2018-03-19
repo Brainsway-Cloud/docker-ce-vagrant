@@ -41,7 +41,15 @@
            -e TYPE='update-listener' \
            -e URL='http://$USERNAME:$PASSWORD@$LOCAL_IP:5984' \
            redgeoff/spiegel
-           
+                   
+        cat >replicator-passwords.json <<!
+        {
+           "$LOCAL_IP": {
+                "$USERNAME": "$PASSWORD"
+           }
+        }
+!
+
         docker service create \
            --name spiegel-replicator \
            --detach=true \
