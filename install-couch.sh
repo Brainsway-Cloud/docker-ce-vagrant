@@ -36,9 +36,9 @@
           -e COUCHDB_NODE_NAME=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)` \
           redgeoff/couchdb      
           
-        curl -X PUT http://admin:admin@172.31.47.226:5984/_users
-        curl -X PUT http://admin:admin@172.31.47.226:5984/_replicator
-        curl -X PUT http://admin:admin@172.31.47.226:5984/_global_changes
+        curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_users
+        curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_replicator
+        curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_global_changes
           
         docker run -it --name spiegel-install \
           -e TYPE='install' \
