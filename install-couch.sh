@@ -13,7 +13,12 @@
               
         # Create a directory for hosting your DB files
         mkdir /home/ubuntu/common
-        
+
+        cat >/etc/docker/daemon.json <<!
+        {
+            "log-driver": "syslog"
+        }
+!
         docker swarm init
         
         # Run a CouchDB Docker Container. 
@@ -43,7 +48,7 @@
            -e TYPE='update-listener' \
            -e URL='http://$USERNAME:$PASSWORD@$LOCAL_IP:5984' \
            redgeoff/spiegel
-                   
+           
         cat >replicator-passwords.json <<!
         {
            "$LOCAL_IP": {
@@ -51,7 +56,6 @@
            }
         }
 !
-
         docker service create \
            --name spiegel-replicator \
            --detach=true \
