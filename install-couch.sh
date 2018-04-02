@@ -34,7 +34,11 @@
           -e COUCHDB_COOKIE=$COOKIE \
           -e COUCHDB_SECRET=$SECRET \
           -e COUCHDB_NODE_NAME=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)` \
-          redgeoff/couchdb         
+          redgeoff/couchdb      
+          
+        curl -X PUT http://admin:admin@172.31.47.226:5984/_users
+        curl -X PUT http://admin:admin@172.31.47.226:5984/_replicator
+        curl -X PUT http://admin:admin@172.31.47.226:5984/_global_changes
           
         docker run -it --name spiegel-install \
           -e TYPE='install' \
