@@ -49,7 +49,7 @@
            -e URL='http://$USERNAME:$PASSWORD@$LOCAL_IP:5984' \
            redgeoff/spiegel
            
-        cat >replicator-passwords.json <<!
+        cat >/tmp/replicator-passwords.json <<!
         {
            "$LOCAL_IP": {
                 "$USERNAME": "$PASSWORD"
@@ -61,7 +61,7 @@
            --detach=true \
            --replicas 2 \
            -e URL='http://$USERNAME:$PASSWORD@$LOCAL_IP:5984' \
-           --mount type=bind,source=replicator-passwords.json,destination=/usr/src/app/passwords.json \
+           --mount type=bind,source=/tmp/replicator-passwords.json,destination=/usr/src/app/passwords.json \
            -e PASSWORDS_FILE=/usr/src/app/passwords.json \
            redgeoff/spiegel
           
