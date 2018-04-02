@@ -14,6 +14,8 @@
         # Create a directory for hosting your DB files
         mkdir /home/ubuntu/common
         
+        docker swarm init
+        
         # Run a CouchDB Docker Container. 
         # (Use EC2 metadata URL to get machine local IP.)
         # (password=admin. use couchdb-hash-pwd -p my-password to generate new COUCHDB_HASHED_PASSWORD)
