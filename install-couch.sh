@@ -50,7 +50,7 @@
            --detach=true \
            --replicas 2 \
            -e TYPE='update-listener' \
-           -e URL='http://$USERNAME:$PASSWORD@$LOCAL_IP:5984' \
+           -e URL=http://$USERNAME:$PASSWORD@$LOCAL_IP:5984 \
            redgeoff/spiegel
            
         cat >/tmp/replicator-passwords.json <<!
@@ -64,7 +64,7 @@
            --name spiegel-replicator \
            --detach=true \
            --replicas 2 \
-           -e URL='http://$USERNAME:$PASSWORD@$LOCAL_IP:5984' \
+           -e URL=http://$USERNAME:$PASSWORD@$LOCAL_IP:5984 \
            --mount type=bind,source=/tmp/replicator-passwords.json,destination=/usr/src/app/passwords.json \
            -e PASSWORDS_FILE=/usr/src/app/passwords.json \
            redgeoff/spiegel
