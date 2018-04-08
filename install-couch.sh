@@ -36,9 +36,15 @@
           -e COUCHDB_NODE_NAME=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)` \
           redgeoff/couchdb      
           
+       // may take some time for couchdb to be ready, sp keep trying until successs   
+        while [[ $response != *'{"ok":true}'* ]]
+        do
+           sleep 5
+           response=`curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_global_changes`
+        done
+
         curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_users
         curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_replicator
-        curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_global_changes
           
         docker run -it --name spiegel-install \
           -e TYPE='install' \
