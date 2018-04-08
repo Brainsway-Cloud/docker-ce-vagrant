@@ -36,7 +36,7 @@
           -e COUCHDB_NODE_NAME=`(curl http://169.254.169.254/latest/meta-data/local-ipv4)` \
           redgeoff/couchdb      
           
-       // may take some time for couchdb to be ready, sp keep trying until successs   
+       // may take some time for couchdb to be ready, so keep trying until successs   
         response=""
         while [[ $response != *'{"ok":true}'* ]]
         do
