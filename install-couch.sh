@@ -72,8 +72,9 @@
            --detach=true \
            --replicas 2 \
            -e URL=http://$USERNAME:$PASSWORD@$LOCAL_IP:5984 \
-           --mount type=bind,source=/tmp/replicator-passwords.json,destination=/usr/src/app/passwords.json \
+           -e TYPE='replicator' \
            -e PASSWORDS_FILE=/usr/src/app/passwords.json \
+           --mount type=bind,source=/tmp/replicator-passwords.json,destination=/usr/src/app/passwords.json \
            redgeoff/spiegel
           
         # Enable CORS so that your application can communicate with the database from another domain/subdomain.
