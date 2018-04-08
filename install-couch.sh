@@ -37,6 +37,7 @@
           redgeoff/couchdb      
           
        // may take some time for couchdb to be ready, sp keep trying until successs   
+        response=""
         while [[ $response != *'{"ok":true}'* ]]
         do
            sleep 5
