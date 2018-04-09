@@ -47,7 +47,7 @@
         curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_users
         curl -X PUT http://$USERNAME:$PASSWORD@$LOCAL_IP:5984/_replicator
           
-        docker run -it --name spiegel-install \
+        docker run --name spiegel-install \
           -e TYPE='install' \
           -e URL=http://$USERNAME:$PASSWORD@$LOCAL_IP:5984 \
           redgeoff/spiegel
