@@ -14,16 +14,17 @@
         # Create a directory for hosting your DB files
         mkdir /home/ubuntu/common
 
-        cat >/etc/docker/daemon.json <<!
-        {
-            "log-driver": "syslog"
-        }
-!
+        #cat >/etc/docker/daemon.json <<!
+        #{
+        #    "log-driver": "syslog"
+        #}
+        #!
+        
         docker swarm init
         
         # Run a CouchDB Docker Container. 
         # (Use EC2 metadata URL to get machine local IP.)
-        # (password=admin. use couchdb-hash-pwd -p my-password to generate new COUCHDB_HASHED_PASSWORD)
+        # (use couchdb-hash-pwd -p my-password to generate new COUCHDB_HASHED_PASSWORD)
         docker run -d --name couchdb \
           --restart always \
           -p 5984:5984 -p 5986:5986 -p 4369:4369 -p 9100-9200:9100-9200 \
